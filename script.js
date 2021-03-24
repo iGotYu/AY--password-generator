@@ -25,9 +25,9 @@ lengthOfPassword = prompt(
    numericalValue= confirm('Would you like Numbers included?');
 
 if(lengthOfPassword. lengthOfPassword<8 ||lengthOfPassword>128){
-  return "Enter a valid password length";
+  return alert("Enter a valid password length");
 }else if (!upperCase&& !lowerCase&& !specialCharacter&& !numericalValue){
-  return "Select at least one type of character for your password";
+  return alert("Select at least one type of character for your password");
 }else{
   if(upperCase){
     characterHolder += upperCaseString;
