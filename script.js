@@ -9,6 +9,7 @@ var upperCaseString = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 var numberString = "0123456789";
 var symbolsString ="!@#$%^&*(_{}[]|?><.,";
 var characterHolder= "";
+var userPassword= "";
 
 
 //DO NOT CHANGE THIS CODE
@@ -19,14 +20,16 @@ function generatePassword(){
 
 lengthOfPassword = prompt(
   "How long would you like your password?", "Between 8-128 characters");
+  if(lengthOfPassword < 8 ||lengthOfPassword > 128){
+    return alert("Enter a valid password length");}
    upperCase= confirm('Would you like UpperCase Letters included?');
    lowerCase= confirm('Would you like Lowercase Letters included?');
    specialCharacter= confirm('Would you like Special characters included?');
    numericalValue= confirm('Would you like Numbers included?');
 
-if(lengthOfPassword. lengthOfPassword<8 ||lengthOfPassword>128){
-  return alert("Enter a valid password length");
-}else if (!upperCase&& !lowerCase&& !specialCharacter&& !numericalValue){
+// if(lengthOfPassword < 8 ||lengthOfPassword > 128){
+//   return alert("Enter a valid password length");
+ if (!upperCase&& !lowerCase&& !specialCharacter&& !numericalValue){
   return alert("Select at least one type of character for your password");
 }else{
   if(upperCase){
@@ -38,6 +41,12 @@ if(lengthOfPassword. lengthOfPassword<8 ||lengthOfPassword>128){
   if(numericalValue){
     characterHolder += numberString;
   }
+
+for(let x=0; x<lengthOfPassword; x++){
+  userPassword = characterHolder.charAt(Math.floor(Math.random()*characterHolder.length))
+}
+
+
 }
 
 }
