@@ -11,6 +11,8 @@ var symbolsString = "!@#$%^&*(_{}[]|?><.,";
 var characterHolder = "";
 var password = "";
 
+alert('WELCOME TO THE PASSWORD GENERATOR \n Click Generate Password to Begin! ')
+
 //DO NOT CHANGE THIS CODE
 var generateBtn = document.querySelector("#generate");
 
@@ -23,9 +25,9 @@ function generatePassword() {
   );
   var passwordLength = parseInt(lengthOfPassword);
     
-  if (lengthOfPassword < 8 || lengthOfPassword > 128) {
-    //input an invalid length will result in the user to try again
-    return alert("Try again and enter a valid password length");
+  if (lengthOfPassword < 8 || lengthOfPassword > 128|| isNaN(lengthOfPassword)) {
+    //input an invalid numerical length will result in the user to try again
+    return alert("Try again and enter a valid numerical password length");
   }
 
   // TODO: redirect to begin again
@@ -55,7 +57,7 @@ function generatePassword() {
     }
 
     for (let x = 0; x < passwordLength; x++) {
-      password = characterHolder.charAt(
+      password += characterHolder.charAt(
         Math.floor(Math.random() * characterHolder.length)
       );
       console.log(passwordLength)
