@@ -19,18 +19,24 @@ var generateBtn = document.querySelector("#generate");
 function generatePassword() {
   //TODO: your code here
 
-  lengthOfPassword = prompt(
+  lengthOfPassword = parseInt(prompt(
     "How long would you like your password?",
     "Between 8-128 characters"
-  );
-  var passwordLength = parseInt(lengthOfPassword);
-    
-  if (lengthOfPassword < 8 || lengthOfPassword > 128|| isNaN(lengthOfPassword)) {
-    //input an invalid numerical length will result in the user to try again
-    return alert("Try again and enter a valid numerical password length");
-  }
+  ));
 
-  // TODO: redirect to begin again
+  while (lengthOfPassword < 8 || lengthOfPassword > 128 || isNaN(lengthOfPassword)) {
+    alert("Try again and enter a valid numerical password length");
+    lengthOfPassword = parseInt(prompt(
+      "How long would you like your password?",
+      "Between 8-128 characters"
+    ));
+  }
+    
+  // if (lengthOfPassword < 8 || lengthOfPassword > 128|| isNaN(lengthOfPassword)) {
+  //   //input an invalid numerical length will result in the user to try again
+  // }
+
+  // redirect to begin again once button is clicked
   upperCase = confirm("Would you like UpperCase Letters included?");
   console.log(upperCase);
   lowerCase = confirm("Would you like Lowercase Letters included?");
@@ -39,6 +45,8 @@ function generatePassword() {
   console.log(specialCharacter);
   numericalValue = confirm("Would you like Numbers included?");
   console.log(numericalValue);
+
+  //the characterHolder is getting its string here based on the users decision
 
   if (!upperCase && !lowerCase && !specialCharacter && !numericalValue) {
     return alert("Select at least one type of character for your password");
@@ -56,16 +64,14 @@ function generatePassword() {
       characterHolder += symbolsString;
     }
 
-    for (let x = 0; x < passwordLength; x++) {
+    for (let x = 0; x < lengthOfPassword; x++) {
       password += characterHolder.charAt(
         Math.floor(Math.random() * characterHolder.length)
       );
-      console.log(passwordLength)
-    // console.log(characterHolder.length)
+      console.log(lengthOfPassword)
     console.log(password)
     
     }
-    // const userPassword=lengthOfPassword.slice(0,length);
     return password;
   }
 }
